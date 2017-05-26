@@ -1545,15 +1545,6 @@ int sensor_probe(struct i2c_client *client, const struct i2c_device_id *devid)
 	mutex_init(&sensor->sensor_mutex);
 	mutex_init(&sensor->i2c_mutex);
 
-	/* As default, report all information */
-	atomic_set(&sensor->flags.m_flag, 1);
-	atomic_set(&sensor->flags.a_flag, 1);
-	atomic_set(&sensor->flags.mv_flag, 1);			
-	atomic_set(&sensor->flags.open_flag, 0);
-	atomic_set(&sensor->flags.debug_flag, 0);
-	init_waitqueue_head(&sensor->flags.open_wq);
-	sensor->flags.delay = 100;
-
 	sensor->status_cur = SENSOR_OFF;
 	sensor->axis.x = 0;
 	sensor->axis.y = 0;
