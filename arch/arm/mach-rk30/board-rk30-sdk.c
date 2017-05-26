@@ -1222,7 +1222,7 @@ static int rk29_backlight_pwm_resume(void)
 	gpio_free(PWM_GPIO);
 	rk30_mux_api_set(PWM_MUX_NAME, PWM_MUX_MODE);
 #ifdef  LCD_DISP_ON_PIN
-	msleep(30);
+	msleep(150);
 	gpio_direction_output(BL_EN_PIN, 1);
 	gpio_set_value(BL_EN_PIN, BL_EN_VALUE);
 #endif
@@ -2838,18 +2838,18 @@ static struct dvfs_arm_table dvfs_cpu_logic_table[] = {
 	{.frequency = 1416 * 1000,	.cpu_volt = 1300 * 1000,	.logic_volt = 1200 * 1000},//1.225V/1.100V
 	{.frequency = 1512 * 1000,	.cpu_volt = 1350 * 1000,	.logic_volt = 1250 * 1000},//1.300V/1.150V
 	{.frequency = 1608 * 1000,	.cpu_volt = 1375 * 1000,	.logic_volt = 1275 * 1000},//1.325V/1.175V
-	{.frequency = 1704 * 1000,	.cpu_volt = 1400 * 1000,	.logic_volt = 1300 * 1000},//1.325V/1.175V
+	{.frequency = 1704 * 1000,	.cpu_volt = 1400 * 1000,	.logic_volt = 1300 * 1000},//1.350V/1.175V
 	{.frequency = CPUFREQ_TABLE_END},
 };
 
 static struct cpufreq_frequency_table dvfs_gpu_table[] = {
-	{.frequency = 266 * 1000,	.index = 1050 * 1000},
+	//{.frequency = 266 * 1000,	.index = 1050 * 1000},
 	{.frequency = 400 * 1000,	.index = 1275 * 1000},
 	{.frequency = CPUFREQ_TABLE_END},
 };
 
 static struct cpufreq_frequency_table dvfs_ddr_table[] = {
-	{.frequency = 300 * 1000,	.index = 1050 * 1000},
+	//{.frequency = 300 * 1000,	.index = 1050 * 1000},
 	{.frequency = 400 * 1000,	.index = 1125 * 1000},
 	{.frequency = CPUFREQ_TABLE_END},
 };
